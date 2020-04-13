@@ -9,7 +9,23 @@ def hello_world():
 @app.route('/<username>')
 def show_user_profile(username):
     # show the user profile for that user
-    return 'User {}'.format(username)
+    print('Given Name is :{}'.format(username))
+    japanese_name = j_name(username)
+    return 'Original Name :{}'.format(username) \
+           + '\n \n Translated Name : {}'.format(japanese_name)
+
+def j_name(uname):
+    japanese_alphabet = {'a': 'ka', 'b': 'tu', 'c': 'mi', 'd': 'te',
+                        'e': 'ku', 'f': 'lu', 'g': 'ji', 'h': 'ri',
+                        'i': 'ki','j': 'zu', 'k': 'me', 'l': 'ta',
+                        'm': 'rin', 'n': 'to', 'o': 'mo', 'p': 'no',
+                        'q': 'ke', 'r': 'shi', 's': 'ari', 't': 'chi',
+                        'u': 'do','v': 'ru', 'w': 'mei', 'x': 'na',
+                        'y': 'fu', 'z': 'zi'}
+    uname = uname.lower()
+    translate_name = list()
+    [translate_name.append(japanese_alphabet[i]) for i in uname]
+    return ''.join(translate_name)
 
 
 @app.route('/add/<numbers>')
