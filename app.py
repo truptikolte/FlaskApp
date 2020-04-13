@@ -9,10 +9,8 @@ def hello_world():
 @app.route('/<username>')
 def show_user_profile(username):
     # show the user profile for that user
-    print('Given Name is :{}'.format(username))
     japanese_name = j_name(username)
-    return 'Original Name :{}'.format(username) \
-           + '\n \n Translated Name : {}'.format(japanese_name)
+    return {'original name': username, 'translated name': japanese_name}
 
 def j_name(uname):
     japanese_alphabet = {'a': 'ka', 'b': 'tu', 'c': 'mi', 'd': 'te',
